@@ -1,1 +1,171 @@
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Akrika Technologies</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      margin: 0;
+      background: #ffffff;
+      color: #212529;
+    }
+    header {
+      background: #f8f9fa;
+      padding: 1rem;
+      position: relative;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    header h1 {
+      font-size: 1.8rem;
+      color: #0d6efd;
+      margin: 0;
+    }
+    nav.desktop-nav a {
+      margin: 0 0.6rem;
+      text-decoration: none;
+      color: #0d6efd;
+      font-weight: 500;
+      display: inline-block;
+    }
+    nav.desktop-nav a:hover {
+      text-decoration: underline;
+    }
+    .menu-icon {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 250px;
+      height: 100%;
+      background: #ffffff;
+      box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      transition: right 0.3s ease;
+      z-index: 1000;
+    }
+    .mobile-nav a {
+      margin: 1rem 0;
+      color: #0d6efd;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+    .mobile-nav a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 600px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+    h1 {
+      color: #0d6efd;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    input, textarea {
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      padding: 0.75rem;
+      font-size: 1rem;
+      background: #0d6efd;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #0056d2;
+    }
+    footer {
+      background: #f8f9fa;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #6c757d;
+      margin-top: 3rem;
+    }
+    @media (max-width: 768px) {
+      nav.desktop-nav {
+        display: none;
+      }
+      .menu-icon {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Akrika Technologies</h1>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <nav class="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="internship.html">Internship</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="index.html" onclick="toggleMenu()">Home</a>
+      <a href="about.html" onclick="toggleMenu()">About</a>
+      <a href="internship.html" onclick="toggleMenu()">Internship</a>
+      <a href="contact.html" onclick="toggleMenu()">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Contact Us</h1>
+    <form action="#" method="post">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 Akrika Technologies. All rights reserved.
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('mobileNav');
+      nav.style.right = nav.style.right === '0px' ? '-100%' : '0px';
+    }
+    window.addEventListener('click', function(e) {
+      const nav = document.getElementById('mobileNav');
+      if (!e.target.closest('.mobile-nav') && !e.target.closest('.menu-icon')) {
+        nav.style.right = '-100%';
+      }
+    });
+  </script>
+</body>
+</html>
