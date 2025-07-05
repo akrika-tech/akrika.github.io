@@ -6,129 +6,87 @@
   <title>Akrika Technologies</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --primary: #0d6efd;
-      --bg: #ffffff;
-      --text: #212529;
-      --muted: #6c757d;
-      --light: #f8f9fa;
-      --accent: #6610f2;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Outfit', sans-serif;
-    }
-
     body {
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      background: #ffffff;
+      color: #212529;
     }
-
     header {
-      background: var(--light);
-      padding: 1.5rem;
+      background: #f8f9fa;
+      padding: 2rem 1rem;
       text-align: center;
-      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid #ddd;
     }
-
-    header h1 {
-      font-size: 2.4rem;
-      color: var(--primary);
-    }
-
-    nav {
-      margin-top: 1rem;
-    }
-
     nav a {
       margin: 0 1rem;
-      color: var(--text);
       text-decoration: none;
+      color: #212529;
       font-weight: 500;
-      transition: color 0.3s ease;
     }
-
     nav a:hover {
-      color: var(--primary);
+      color: #0d6efd;
     }
-
     .hero {
-      padding: 4rem 2rem;
+      padding: 4rem 1rem 2rem;
       text-align: center;
-      background: linear-gradient(to right, #f0f4ff, #e7ecff);
-      background-size: cover;
-      background-position: center;
-      color: var(--text);
+      background: linear-gradient(135deg, #eaf1ff, #ffffff);
     }
-
-    .hero h2 {
-      font-size: 2.5rem;
+    .hero h1 {
+      font-size: 3rem;
+      color: #0d6efd;
       margin-bottom: 1rem;
     }
-
     .hero p {
       font-size: 1.2rem;
-      max-width: 600px;
-      margin: 0 auto;
+      color: #444;
+      max-width: 800px;
+      margin: 0 auto 2rem;
     }
-
-    .btn {
-      display: inline-block;
-      margin-top: 2rem;
-      padding: 0.75rem 1.5rem;
-      background: var(--primary);
+    .cta-btn {
+      background-color: #0d6efd;
       color: #fff;
-      font-weight: bold;
+      padding: 0.8rem 1.5rem;
       border: none;
       border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
+      font-size: 1rem;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s;
     }
-
-    .btn:hover {
-      background: var(--accent);
+    .cta-btn:hover {
+      background-color: #0056d2;
     }
-
-    section {
-      padding: 4rem 2rem;
+    .section {
+      padding: 3rem 1.5rem;
       max-width: 1000px;
-      margin: auto;
+      margin: 0 auto;
       text-align: center;
     }
-
-    section img {
-      max-width: 100%;
-      height: auto;
+    .section h2 {
+      font-size: 2rem;
+      color: #0d6efd;
+      margin-bottom: 1rem;
+    }
+    .section p {
+      font-size: 1.1rem;
+      color: #333;
+      line-height: 1.7;
+    }
+    .highlight-box {
+      background: #f1f5ff;
+      border-left: 4px solid #0d6efd;
+      padding: 1.5rem;
+      border-radius: 8px;
       margin-top: 2rem;
-      border-radius: 12px;
+      text-align: left;
     }
-
     footer {
-      background: var(--light);
-      padding: 1.5rem 1rem;
+      background: #f8f9fa;
+      padding: 1rem;
       text-align: center;
-      color: var(--muted);
+      color: #6c757d;
       font-size: 0.9rem;
-      margin-top: 3rem;
-      border-top: 1px solid #ddd;
-    }
-
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2rem;
-      }
-
-      .hero h2 {
-        font-size: 2rem;
-      }
-
-      .hero p {
-        font-size: 1rem;
-      }
     }
   </style>
 </head>
@@ -144,15 +102,41 @@
   </header>
 
   <section class="hero">
-    <h2>Empowering Students with Future Tech</h2>
-    <p>Learn AI, Web, and Software with real-world projects & internship certifications. Build skills that matter for the future.</p>
-    <a href="internship.html" class="btn">Start Your Free Internship</a>
+    <h1>Empowering Tech Minds of Tomorrow</h1>
+    <p>We are a future-driven AI & software company committed to bridging the gap between learning and doing — through world-class internships, real projects, and innovation.</p>
+    <a href="register.html" class="cta-btn">Apply for Internship</a>
   </section>
 
-  <section id="preview">
-    <h2>Modern Learning Experience</h2>
-    <p>Our internships are hands-on, curated by professionals, and focused on job-ready outcomes.</p>
-    <img src="https://source.unsplash.com/1200x600/?coding,students" alt="Students Coding">
+  <section class="section">
+    <h2>🚀 Explore Our Internships</h2>
+    <p>Choose from a variety of domains:</p>
+    <div class="highlight-box">
+      <p>🧠 AI / Machine Learning<br>
+         🌐 Web Development<br>
+         💻 Software Development<br>
+         📱 App Development<br>
+         🖥️ C / C++ Programming<br>
+         🐍 Python<br>
+         ☕ Java
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>📈 3-Level Growth Path</h2>
+    <p>Start with a free internship and grow through our exclusive selection process:</p>
+    <div class="highlight-box">
+      <p>🔹 Level 1: Unpaid Internship + Certificate<br>
+         🔹 Level 2: Online Test Shortlisting<br>
+         🔹 Level 3: Final Project/Interview → Chance for ₹1,00,000 premium internship
+      </p>
+    </div>
+    <p><strong>It’s 100% Free to Apply. Your skills define your level.</strong></p>
+  </section>
+
+  <section class="section">
+    <h2>🏆 Recognized & Trusted</h2>
+    <p>✅ Akrika Technologies is a registered MSME under the Govt. of India (UDYAM-HR-19-0059373)</p>
   </section>
 
   <footer>
