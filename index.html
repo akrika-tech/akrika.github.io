@@ -1,77 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Akrika Technologies</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #0d6efd;
+      --bg: #ffffff;
+      --text: #212529;
+      --muted: #6c757d;
+      --light: #f8f9fa;
+      --accent: #6610f2;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Orbitron', sans-serif;
+      font-family: 'Outfit', sans-serif;
     }
+
     body {
-      background: #0e0e0e;
-      color: #ffffff;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
     }
+
     header {
-      padding: 2rem;
-      background: #111827;
+      background: var(--light);
+      padding: 1.5rem;
       text-align: center;
-      border-bottom: 2px solid #1f2937;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
     }
+
     header h1 {
-      font-size: 2.5rem;
-      color: #00f6ff;
+      font-size: 2.4rem;
+      color: var(--primary);
     }
+
     nav {
       margin-top: 1rem;
     }
+
     nav a {
       margin: 0 1rem;
-      color: #a0aec0;
+      color: var(--text);
       text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
     }
+
     nav a:hover {
-      color: #00f6ff;
+      color: var(--primary);
     }
-    section {
+
+    .hero {
       padding: 4rem 2rem;
       text-align: center;
+      background: linear-gradient(to right, #f0f4ff, #e7ecff);
+      background-size: cover;
+      background-position: center;
+      color: var(--text);
     }
-    .hero {
-      background: linear-gradient(145deg, #111827, #1f2937);
-    }
+
     .hero h2 {
-      font-size: 2rem;
+      font-size: 2.5rem;
       margin-bottom: 1rem;
-      color: #00f6ff;
     }
+
     .hero p {
       font-size: 1.2rem;
-      color: #d1d5db;
+      max-width: 600px;
+      margin: 0 auto;
     }
+
     .btn {
+      display: inline-block;
       margin-top: 2rem;
       padding: 0.75rem 1.5rem;
-      background: #00f6ff;
-      color: #000;
-      border: none;
-      border-radius: 5px;
+      background: var(--primary);
+      color: #fff;
       font-weight: bold;
+      border: none;
+      border-radius: 8px;
       cursor: pointer;
+      transition: background 0.3s ease;
     }
+
     .btn:hover {
-      background: #0cf;
+      background: var(--accent);
     }
-    footer {
-      background: #111827;
-      padding: 1rem;
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
       text-align: center;
-      color: #6b7280;
+    }
+
+    section img {
+      max-width: 100%;
+      height: auto;
+      margin-top: 2rem;
+      border-radius: 12px;
+    }
+
+    footer {
+      background: var(--light);
+      padding: 1.5rem 1rem;
+      text-align: center;
+      color: var(--muted);
       font-size: 0.9rem;
+      margin-top: 3rem;
+      border-top: 1px solid #ddd;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -79,26 +136,23 @@
   <header>
     <h1>Akrika Technologies</h1>
     <nav>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="internship.html">Internship</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h2>Build the Future with AI & Code</h2>
-    <p>Online certifications, student projects, and next-gen software solutions.</p>
-    <button class="btn">Explore Courses</button>
+    <h2>Empowering Students with Future Tech</h2>
+    <p>Learn AI, Web, and Software with real-world projects & internship certifications. Build skills that matter for the future.</p>
+    <a href="internship.html" class="btn">Start Your Free Internship</a>
   </section>
 
-  <section id="about">
-    <h2>About Us</h2>
-    <p>We empower Computer Science students with real-world skills in Python, AI/ML, and software development. Join our growing community and learn by building.</p>
-  </section>
-
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p>Email: info@akrìka.com</p>
-    <p>WhatsApp: +91-XXXXXXXXXX</p>
+  <section id="preview">
+    <h2>Modern Learning Experience</h2>
+    <p>Our internships are hands-on, curated by professionals, and focused on job-ready outcomes.</p>
+    <img src="https://source.unsplash.com/1200x600/?coding,students" alt="Students Coding">
   </section>
 
   <footer>

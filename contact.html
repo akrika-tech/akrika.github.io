@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Akrika Technologies</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Outfit', sans-serif;
+      margin: 0;
+      background: #ffffff;
+      color: #212529;
+    }
+    header {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+    nav a {
+      margin: 0 1rem;
+      color: #212529;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: #0d6efd;
+    }
+    .container {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+    h1 {
+      color: #0d6efd;
+      font-size: 2.2rem;
+      text-align: center;
+    }
+    form {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    input, textarea {
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    button {
+      padding: 0.8rem;
+      background: #0d6efd;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #0056d2;
+    }
+    .info {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 1rem;
+      color: #555;
+    }
+    .popup {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      display: none;
+    }
+    .popup .box {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+    }
+    .popup .box h2 {
+      color: #0d6efd;
+      margin-bottom: 1rem;
+    }
+    footer {
+      background: #f8f9fa;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #6c757d;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Akrika Technologies</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="internship.html">Internship</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Contact Us</h1>
+    <form name="contactForm" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+
+    <div class="info">
+      <p>Email: contact@akrika.com</p>
+      <p>Phone: +91-XXXXXXXXXX</p>
+      <p>Location: Operates Online – Based in India 🇮🇳</p>
+    </div>
+  </div>
+
+  <div class="popup" id="popup">
+    <div class="box" id="popupBox">
+      <h2 id="popupMessage">Sending your message...</h2>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Akrika Technologies. All rights reserved.
+  </footer>
+
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyD_bkExW0d0T9hHTETcEVqVFjUFUoFG0lzAENMbHn6q1npj7rWcL_ORQO0JH_VQ1xaFQ/exec';
+    const form = document.forms['contactForm'];
+    const popup = document.getElementById('popup');
+    const popupMessage = document.getElementById('popupMessage');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      popup.style.display = 'flex';
+      popupMessage.textContent = 'Sending your message...';
+
+      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => {
+          popupMessage.textContent = '✅ Thank you! We have received your message and will get back to you soon.';
+          form.reset();
+          setTimeout(() => {
+            popup.style.display = 'none';
+          }, 4000);
+        })
+        .catch(error => {
+          popupMessage.textContent = '❌ Submission failed. Please try again later.';
+          setTimeout(() => {
+            popup.style.display = 'none';
+          }, 4000);
+        });
+    });
+  </script>
+</body>
+</html>
