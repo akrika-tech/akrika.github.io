@@ -3,33 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Internship Registration - Akrika Technologies</title>
+  <title>Register - Akrika Technologies</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    * { box-sizing: border-box; }
     body {
+      margin: 0;
       font-family: 'Outfit', sans-serif;
       background: #ffffff;
       color: #212529;
-      margin: 0;
     }
     header {
       background: #f8f9fa;
-      padding: 1.5rem 1rem;
-      text-align: center;
+      padding: 1rem;
+      position: relative;
       border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
     }
-    nav {
-      margin-top: 1rem;
+    header h1 {
+      font-size: 1.8rem;
+      color: #0d6efd;
+      margin: 0;
     }
-    nav a {
+    nav.desktop-nav a {
       margin: 0 0.6rem;
       text-decoration: none;
-      color: #212529;
+      color: #0d6efd;
       font-weight: 500;
       display: inline-block;
     }
-    nav a:hover {
+    nav.desktop-nav a:hover {
+      text-decoration: underline;
+    }
+    .menu-icon {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 250px;
+      height: 100%;
+      background: #ffffff;
+      box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      transition: right 0.3s ease;
+      z-index: 1000;
+    }
+    .mobile-nav a {
+      margin: 1rem 0;
       color: #0d6efd;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+    .mobile-nav a:hover {
+      text-decoration: underline;
     }
     .container {
       max-width: 600px;
@@ -97,16 +133,31 @@
       color: #6c757d;
       margin-top: 3rem;
     }
+    @media (max-width: 768px) {
+      nav.desktop-nav {
+        display: none;
+      }
+      .menu-icon {
+        display: block;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>Akrika Technologies</h1>
-    <nav>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <nav class="desktop-nav">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="internship.html">Internship</a>
       <a href="contact.html">Contact</a>
+    </nav>
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="index.html" onclick="toggleMenu()">Home</a>
+      <a href="about.html" onclick="toggleMenu()">About</a>
+      <a href="internship.html" onclick="toggleMenu()">Internship</a>
+      <a href="contact.html" onclick="toggleMenu()">Contact</a>
     </nav>
   </header>
 
@@ -120,17 +171,16 @@
       <input type="text" name="branch" placeholder="Branch (e.g., CSE)" required>
       <input type="text" name="college" placeholder="College Name" required>
       <input type="text" name="year" placeholder="Year of Study (e.g., 2nd, 3rd)" required>
-      <label for="internshiptype">Internship Domain</label>
-        <select name="internshiptype" id="internshiptype" required>
-          <option value="">-- Select Internship Domain --</option>
-          <option value="AI/ML">AI/ML</option>
-          <option value="Web Development">Web Development</option>
-          <option value="Software Development">Software Development</option>
-          <option value="App Development">App Development</option>
-          <option value="C/C++">C/C++</option>
-          <option value="Python">Python</option>
-          <option value="Java">Java</option>
-        </select>
+      <select name="internshiptype" required>
+        <option value="" disabled selected>Select Internship Type</option>
+        <option value="AI/ML">AI / Machine Learning</option>
+        <option value="Web Development">Web Development</option>
+        <option value="Software Development">Software Development</option>
+        <option value="App Development">App Development</option>
+        <option value="C/C++">C / C++</option>
+        <option value="Python">Python</option>
+        <option value="Java">Java</option>
+      </select>
       <textarea name="why" rows="4" placeholder="Why do you want to join this internship?" required></textarea>
       <button type="submit">Submit Application</button>
     </form>
@@ -147,6 +197,17 @@
   </footer>
 
   <script>
+    function toggleMenu() {
+      const nav = document.getElementById('mobileNav');
+      nav.style.right = nav.style.right === '0px' ? '-100%' : '0px';
+    }
+    window.addEventListener('click', function(e) {
+      const nav = document.getElementById('mobileNav');
+      if (!e.target.closest('.mobile-nav') && !e.target.closest('.menu-icon')) {
+        nav.style.right = '-100%';
+      }
+    });
+
     const scriptURL = 'https://script.google.com/macros/s/AKfycbzz8_rG5Lj1EmscdXJeP-tcjjIFrLBgYrlEtvalMF6KErPUxH2R-zuEO4YAqpWxkOx4xg/exec';
     const form = document.forms['internshipForm'];
     const popup = document.getElementById('popup');
@@ -166,7 +227,7 @@
           }, 4000);
         })
         .catch(error => {
-          popupMessage.textContent = '❌ Submission failed. Please try again later.';
+          popupMessage.textContent = '❌ Submission failed. Please try again.';
           setTimeout(() => {
             popup.style.display = 'none';
           }, 4000);
