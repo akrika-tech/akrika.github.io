@@ -213,13 +213,32 @@
       }
     });
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwZenZk1G4JwOMoJ0uJvmpLOhrRDqhSVLM0wTzrorlNIF0VUV3lbuVCRYSlohOXB2je/exec'; // your copied script URL
+  
 
-    document.forms['projectForm'].addEventListener('submit', e => {
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwZenZk1G4JwOMoJ0uJvmpLOhrRDqhSVLM0wTzrorlNIF0VUV3lbuVCRYSlohOXB2je/exec';
+    const form = document.forms['projectForm'];
+    const popup = document.getElementById('popup');
+    const popupMessage = document.getElementById('popupMessage');
+
+    form.addEventListener('submit', e => {
       e.preventDefault();
-      fetch(scriptURL, { method: 'POST', body: new FormData(document.forms['projectForm']) })
-        .then(response => alert("✅ Form submitted successfully!"))
-        .catch(error => alert("❌ Failed to submit form."));
+      popup.style.display = 'flex';
+      popupMessage.textContent = 'Submitting your application...';
+
+      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => {
+          popupMessage.textContent = '✅ Thank you! Your application has been submitted. We will contact you soon.';
+          form.reset();
+          setTimeout(() => {
+            popup.style.display = 'none';
+          }, 4000);
+        })
+        .catch(error => {
+          popupMessage.textContent = '❌ Submission failed. Please try again.';
+          setTimeout(() => {
+            popup.style.display = 'none';
+          }, 4000);
+        });
     });
 
   </script>
