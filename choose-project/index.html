@@ -213,31 +213,15 @@
       }
     });
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwZenZk1G4JwOMoJ0uJvmpLOhrRDqhSVLM0wTzrorlNIF0VUV3lbuVCRYSlohOXB2je/exec';
-    const form = document.forms['projectForm'];
-    const popup = document.getElementById('popup');
-    const popupMessage = document.getElementById('popupMessage');
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwZenZk1G4JwOMoJ0uJvmpLOhrRDqhSVLM0wTzrorlNIF0VUV3lbuVCRYSlohOXB2je/exec'; // your copied script URL
 
-    form.addEventListener('submit', e => {
+    document.forms['projectForm'].addEventListener('submit', e => {
       e.preventDefault();
-      popup.style.display = 'flex';
-      popupMessage.textContent = 'Submitting your selection...';
-
-      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-        .then(response => {
-          popupMessage.textContent = '✅ Thank you! Your project preference has been recorded.';
-          form.reset();
-          setTimeout(() => {
-            popup.style.display = 'none';
-          }, 4000);
-        })
-        .catch(error => {
-          popupMessage.textContent = '❌ Submission failed. Please try again.';
-          setTimeout(() => {
-            popup.style.display = 'none';
-          }, 4000);
-        });
+      fetch(scriptURL, { method: 'POST', body: new FormData(document.forms['projectForm']) })
+        .then(response => alert("✅ Form submitted successfully!"))
+        .catch(error => alert("❌ Failed to submit form."));
     });
+
   </script>
 </body>
 </html>
