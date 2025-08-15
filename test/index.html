@@ -18,52 +18,13 @@
       padding: 1rem;
       border-bottom: 1px solid #ddd;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
+      justify-content: center;
     }
     header h1 {
       font-size: 1.8rem;
       color: #0d6efd;
       margin: 0;
-    }
-    nav.desktop-nav a {
-      margin: 0 0.6rem;
-      text-decoration: none;
-      color: #0d6efd;
-      font-weight: 500;
-    }
-    nav.desktop-nav a:hover {
-      text-decoration: underline;
-    }
-    .menu-icon {
-      display: none;
-      font-size: 1.8rem;
-      cursor: pointer;
-    }
-    .mobile-nav {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 250px;
-      height: 100%;
-      background: #ffffff;
-      box-shadow: -2px 0 5px rgba(0,0,0,0.1);
-      padding: 2rem 1rem;
-      display: flex;
-      flex-direction: column;
-      transition: right 0.3s ease;
-      z-index: 1000;
-    }
-    .mobile-nav a {
-      margin: 1rem 0;
-      color: #0d6efd;
-      text-decoration: none;
-      font-size: 1.2rem;
-      font-weight: 500;
-    }
-    .mobile-nav a:hover {
-      text-decoration: underline;
     }
     .container {
       max-width: 800px;
@@ -131,69 +92,83 @@
       color: #6c757d;
       margin-top: 3rem;
     }
-    @media (max-width: 768px) {
-      nav.desktop-nav {
-        display: none;
-      }
-      .menu-icon {
-        display: block;
-      }
-    }
   </style>
 </head>
 <body>
   <header>
     <h1>Akrika Technologies</h1>
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
-    <nav class="desktop-nav">
-      <a href="/index.html">Home</a>
-      <a href="/about/index.html">About</a>
-      <a href="/internship/index.html">Internship</a>
-      <a href="/contact/index.html">Contact</a>
-    </nav>
-    <nav class="mobile-nav" id="mobileNav">
-      <a href="/index.html" onclick="toggleMenu()">Home</a>
-      <a href="/about/index.html" onclick="toggleMenu()">About</a>
-      <a href="/internship/index.html" onclick="toggleMenu()">Internship</a>
-      <a href="/contact/index.html" onclick="toggleMenu()">Contact</a>
-    </nav>
   </header>
 
   <div class="container">
     <h1>Level 2 Test</h1>
+    <p><b>⏳ Time:</b> 45 minutes<br>
+    <b>📅 Date:</b> 17 August 2025<br>
+    <b>💯 Total Questions:</b> 10<br>
+    <i>Note: No negative marking.</i></p>
+
     <form name="level2TestForm" method="POST">
       <input type="email" name="email" placeholder="Registered Email Address" required>
       <input type="tel" name="mobile" placeholder="Registered Mobile Number" required>
 
-      <label>1. What is the output of: print(2 ** 3 ** 2) in Python?</label>
-      <input type="text" name="q1" required>
+      <h3>Section A – Programming & Technical Knowledge (4 MCQs)</h3>
 
-      <label>2. Which data structure works on FIFO principle?</label>
-      <input type="text" name="q2" required>
+      <label>1. Which of the following is NOT an OOP concept?</label>
+      <select name="q1" required>
+        <option value="">Select</option>
+        <option>Inheritance</option>
+        <option>Encapsulation</option>
+        <option>Compilation</option>
+        <option>Polymorphism</option>
+      </select>
 
-      <label>3. If 3x = 18, what is the value of x?</label>
-      <input type="text" name="q3" required>
+      <label>2. What will be the output of the following code?<br>
+      a = [1, 2, 3]<br>b = a<br>b.append(4)<br>print(a)</label>
+      <select name="q2" required>
+        <option value="">Select</option>
+        <option>[1, 2, 3]</option>
+        <option>[1, 2, 3, 4]</option>
+        <option>Error</option>
+        <option>[4, 1, 2, 3]</option>
+      </select>
 
-      <label>4. Name one sorting algorithm with O(n log n) complexity.</label>
-      <input type="text" name="q4" required>
+      <label>3. In web development, which HTTP method is generally used to update existing data?</label>
+      <select name="q3" required>
+        <option value="">Select</option>
+        <option>GET</option>
+        <option>POST</option>
+        <option>PUT</option>
+        <option>DELETE</option>
+      </select>
 
-      <label>5. Which protocol is used for sending emails?</label>
-      <input type="text" name="q5" required>
+      <label>4. In databases, what does ACID stand for?</label>
+      <select name="q4" required>
+        <option value="">Select</option>
+        <option>Atomicity, Consistency, Isolation, Durability</option>
+        <option>Accuracy, Consistency, Integrity, Durability</option>
+        <option>Atomicity, Connectivity, Integrity, Dataflow</option>
+        <option>Accuracy, Clarity, Isolation, Durability</option>
+      </select>
 
-      <label>6. What is the binary equivalent of 13?</label>
-      <input type="text" name="q6" required>
+      <h3>Section B – Coding (2 Questions)</h3>
+      <label>5. Easy: Write a program in any language that prints the sum of all even numbers from 1 to 100.</label>
+      <textarea name="q5" rows="4" required></textarea>
 
-      <label>7. If "APPLE" is coded as "EQQPI", what is "ORANGE" in the same code?</label>
+      <label>6. Medium: Given a list of integers, write a function to return the second largest number without using built-in sort functions. Example: [10, 20, 4, 45, 99] → 45</label>
+      <textarea name="q6" rows="4" required></textarea>
+
+      <h3>Section C – Logical Reasoning & IQ (2 Questions)</h3>
+      <label>7. A train 150 meters long passes a man standing on a platform in 15 seconds. What is the speed of the train in km/hr?</label>
       <input type="text" name="q7" required>
 
-      <label>8. Write a single-line Java code to print "Hello World".</label>
+      <label>8. If 2 typists can type 2 pages in 2 minutes, how many typists are needed to type 18 pages in 6 minutes?</label>
       <input type="text" name="q8" required>
 
-      <label>9. Which SQL command is used to remove all records from a table but keep the structure?</label>
-      <input type="text" name="q9" required>
+      <h3>Section D – Real-World Technical Thinking (2 Questions)</h3>
+      <label>9. Imagine Akrika Technologies is developing a ride-sharing app. Name two challenges you might face in real-time location tracking and suggest possible solutions.</label>
+      <textarea name="q9" rows="4" required></textarea>
 
-      <label>10. If today is Monday, what day will it be after 100 days?</label>
-      <input type="text" name="q10" required>
+      <label>10. You are tasked with building a mobile app for offline messaging without the internet. Briefly explain how you would approach the problem and which technology you might use.</label>
+      <textarea name="q10" rows="4" required></textarea>
 
       <button type="submit">Submit Test</button>
     </form>
@@ -210,17 +185,6 @@
   </footer>
 
   <script>
-    function toggleMenu() {
-      const nav = document.getElementById('mobileNav');
-      nav.style.right = nav.style.right === '0px' ? '-100%' : '0px';
-    }
-    window.addEventListener('click', function(e) {
-      const nav = document.getElementById('mobileNav');
-      if (!e.target.closest('.mobile-nav') && !e.target.closest('.menu-icon')) {
-        nav.style.right = '-100%';
-      }
-    });
-
     const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_URL';
     const form = document.forms['level2TestForm'];
     const popup = document.getElementById('popup');
