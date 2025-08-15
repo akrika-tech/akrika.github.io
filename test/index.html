@@ -93,6 +93,7 @@
     }
     .hidden { display: none !important; }
     .center-text { text-align: center; font-size: 1.2rem; }
+    #successMessage { display:none; color: green; font-size: 1.2rem; text-align:center; }
     footer {
       background: #f8f9fa;
       padding: 1rem;
@@ -110,10 +111,12 @@
 
   <div class="container">
     <h1>Level 2 Test</h1>
-    <p class="center-text"><b>⏳ Time:</b> 45 minutes<br>
-    <b>📅 Date:</b> 17 August 2025<br>
-    <b>💯 Total Questions:</b> 10<br>
-    <i>Note: No negative marking.</i></p>
+    <div id="instructions" class="center-text">
+      <b>⏳ Time:</b> 45 minutes<br>
+      <b>📅 Date:</b> 17 August 2025<br>
+      <b>💯 Total Questions:</b> 10<br>
+      <i>Note: No negative marking.</i>
+    </div>
 
     <div id="beforeStart" class="center-text">
       ⏳ Test will begin on <b>17 August 2025</b> at <b>11:00 AM</b>.
@@ -185,6 +188,11 @@
 
       <button type="submit">Submit Test</button>
     </form>
+
+    <div id="successMessage">
+      ✅ Your test has been submitted successfully.<br>
+      📢 Results will be out on <b>19 August 2025</b>.
+    </div>
   </div>
 
   <div class="popup" id="popup">
@@ -209,13 +217,13 @@
     }
 
     function showTest() {
-        document.getElementById('startButton').style.display = 'none'; // hide start button
-        document.getElementById('testForm').classList.remove('hidden'); // show form
+      document.getElementById('startButton').style.display = 'none';
+      document.getElementById('testForm').classList.remove('hidden');
     }
 
     setInterval(checkStart, 1000);
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzGgH6_26zWQfMBPFlnsgReiJ0Gc8nin2mlsNxpvt2kMT6f9Ut5Z5t8NA8ZZBAz0ucI/exec'; // replace with your URL
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzGgH6_26zWQfMBPFlnsgReiJ0Gc8nin2mlsNxpvt2kMT6f9Ut5Z5t8NA8ZZBAz0ucI/exec';
     const form = document.forms['level2TestForm'];
     const popup = document.getElementById('popup');
     const popupMessage = document.getElementById('popupMessage');
@@ -227,9 +235,11 @@
 
       fetch(scriptURL, { method: 'POST', body: new FormData(form) })
         .then(response => {
-          popupMessage.textContent = '✅ Thank you! Your test has been submitted.';
-          form.reset();
-          setTimeout(() => { popup.style.display = 'none'; }, 4000);
+          popup.style.display = 'none';
+          document.getElementById('testForm').style.display = 'none';
+          document.getElementById('startButton').style.display = 'none';
+          document.getElementById('instructions').style.display = 'none';
+          document.getElementById('successMessage').style.display = 'block';
         })
         .catch(error => {
           popupMessage.textContent = '❌ Submission failed. Please try again.';
