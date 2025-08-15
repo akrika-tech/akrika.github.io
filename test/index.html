@@ -42,11 +42,18 @@
       flex-direction: column;
       gap: 1rem;
     }
-    input, textarea, select {
+    input, textarea {
       padding: 0.75rem;
       font-size: 1rem;
       border: 1px solid #ccc;
       border-radius: 6px;
+    }
+    label {
+      font-weight: bold;
+    }
+    .mcq-options label {
+      font-weight: normal;
+      display: block;
     }
     button {
       padding: 0.75rem;
@@ -84,6 +91,8 @@
       color: #0d6efd;
       margin-bottom: 1rem;
     }
+    .hidden { display: none; }
+    .center-text { text-align: center; font-size: 1.2rem; }
     footer {
       background: #f8f9fa;
       padding: 1rem;
@@ -101,73 +110,81 @@
 
   <div class="container">
     <h1>Level 2 Test</h1>
-    <p><b>⏳ Time:</b> 45 minutes<br>
+    <p class="center-text"><b>⏳ Time:</b> 45 minutes<br>
     <b>📅 Date:</b> 17 August 2025<br>
     <b>💯 Total Questions:</b> 10<br>
     <i>Note: No negative marking.</i></p>
 
-    <form name="level2TestForm" method="POST">
+    <div id="beforeStart" class="center-text">
+      ⏳ Test will begin on <b>17 August 2025</b> at <b>11:00 AM</b>.
+    </div>
+
+    <div id="startButton" class="hidden center-text">
+      <button onclick="showTest()">Start Test</button>
+    </div>
+
+    <form id="testForm" name="level2TestForm" method="POST" class="hidden">
       <input type="email" name="email" placeholder="Registered Email Address" required>
       <input type="tel" name="mobile" placeholder="Registered Mobile Number" required>
 
       <h3>Section A – Programming & Technical Knowledge (4 MCQs)</h3>
 
       <label>1. Which of the following is NOT an OOP concept?</label>
-      <select name="q1" required>
-        <option value="">Select</option>
-        <option>Inheritance</option>
-        <option>Encapsulation</option>
-        <option>Compilation</option>
-        <option>Polymorphism</option>
-      </select>
+      <div class="mcq-options">
+        <label><input type="checkbox" name="q1" value="Inheritance"> Inheritance</label>
+        <label><input type="checkbox" name="q1" value="Encapsulation"> Encapsulation</label>
+        <label><input type="checkbox" name="q1" value="Compilation"> Compilation</label>
+        <label><input type="checkbox" name="q1" value="Polymorphism"> Polymorphism</label>
+      </div>
 
-      <label>2. What will be the output of the following code?<br>
-      a = [1, 2, 3]<br>b = a<br>b.append(4)<br>print(a)</label>
-      <select name="q2" required>
-        <option value="">Select</option>
-        <option>[1, 2, 3]</option>
-        <option>[1, 2, 3, 4]</option>
-        <option>Error</option>
-        <option>[4, 1, 2, 3]</option>
-      </select>
+      <label>2. Output of:
+        <pre>a = [1, 2, 3]
+b = a
+b.append(4)
+print(a)</pre>
+      </label>
+      <div class="mcq-options">
+        <label><input type="checkbox" name="q2" value="[1, 2, 3]"> [1, 2, 3]</label>
+        <label><input type="checkbox" name="q2" value="[1, 2, 3, 4]"> [1, 2, 3, 4]</label>
+        <label><input type="checkbox" name="q2" value="Error"> Error</label>
+        <label><input type="checkbox" name="q2" value="[4, 1, 2, 3]"> [4, 1, 2, 3]</label>
+      </div>
 
-      <label>3. In web development, which HTTP method is generally used to update existing data?</label>
-      <select name="q3" required>
-        <option value="">Select</option>
-        <option>GET</option>
-        <option>POST</option>
-        <option>PUT</option>
-        <option>DELETE</option>
-      </select>
+      <label>3. HTTP method used to update existing data?</label>
+      <div class="mcq-options">
+        <label><input type="checkbox" name="q3" value="GET"> GET</label>
+        <label><input type="checkbox" name="q3" value="POST"> POST</label>
+        <label><input type="checkbox" name="q3" value="PUT"> PUT</label>
+        <label><input type="checkbox" name="q3" value="DELETE"> DELETE</label>
+      </div>
 
-      <label>4. In databases, what does ACID stand for?</label>
-      <select name="q4" required>
-        <option value="">Select</option>
-        <option>Atomicity, Consistency, Isolation, Durability</option>
-        <option>Accuracy, Consistency, Integrity, Durability</option>
-        <option>Atomicity, Connectivity, Integrity, Dataflow</option>
-        <option>Accuracy, Clarity, Isolation, Durability</option>
-      </select>
+      <label>4. ACID in databases stands for?</label>
+      <div class="mcq-options">
+        <label><input type="checkbox" name="q4" value="Atomicity, Consistency, Isolation, Durability"> Atomicity, Consistency, Isolation, Durability</label>
+        <label><input type="checkbox" name="q4" value="Accuracy, Consistency, Integrity, Durability"> Accuracy, Consistency, Integrity, Durability</label>
+        <label><input type="checkbox" name="q4" value="Atomicity, Connectivity, Integrity, Dataflow"> Atomicity, Connectivity, Integrity, Dataflow</label>
+        <label><input type="checkbox" name="q4" value="Accuracy, Clarity, Isolation, Durability"> Accuracy, Clarity, Isolation, Durability</label>
+      </div>
 
-      <h3>Section B – Coding (2 Questions)</h3>
-      <label>5. Easy: Write a program in any language that prints the sum of all even numbers from 1 to 100.</label>
+      <h3>Section B – Coding</h3>
+      <label>5. Program: sum of all even numbers from 1 to 100.</label>
       <textarea name="q5" rows="4" required></textarea>
 
-      <label>6. Medium: Given a list of integers, write a function to return the second largest number without using built-in sort functions. Example: [10, 20, 4, 45, 99] → 45</label>
+      <label>6. Second largest number without sort.</label>
       <textarea name="q6" rows="4" required></textarea>
 
-      <h3>Section C – Logical Reasoning & IQ (2 Questions)</h3>
-      <label>7. A train 150 meters long passes a man standing on a platform in 15 seconds. What is the speed of the train in km/hr?</label>
+      <h3>Section C – Logical Reasoning & IQ</h3>
+      <label>7. Train speed question.</label>
       <input type="text" name="q7" required>
 
-      <label>8. If 2 typists can type 2 pages in 2 minutes, how many typists are needed to type 18 pages in 6 minutes?</label>
+      <label>8. Typists question.</label>
       <input type="text" name="q8" required>
 
-      <h3>Section D – Real-World Technical Thinking (2 Questions)</h3>
-      <label>9. Imagine Akrika Technologies is developing a ride-sharing app. Name two challenges you might face in real-time location tracking and suggest possible solutions.</label>
+      <h3>Section D – Real-World Thinking</h3>
+      <label>9. Ride-sharing app location challenges.</label>
       <textarea name="q9" rows="4" required></textarea>
 
-      <label>10. You are tasked with building a mobile app for offline messaging without the internet. Briefly explain how you would approach the problem and which technology you might use.</label>
+      <label>10. Offline messaging approach.</label>
       <textarea name="q10" rows="4" required></textarea>
 
       <button type="submit">Submit Test</button>
@@ -185,6 +202,24 @@
   </footer>
 
   <script>
+    const startDate = new Date("2025-08-17T11:00:00"); // test start time
+
+    function checkStart() {
+      const now = new Date();
+      if (now >= startDate) {
+        document.getElementById('beforeStart').classList.add('hidden');
+        document.getElementById('startButton').classList.remove('hidden');
+      }
+    }
+
+    function showTest() {
+      document.getElementById('startButton').classList.add('hidden');
+      document.getElementById('testForm').classList.remove('hidden');
+    }
+
+    setInterval(checkStart, 1000); // check every second
+
+    // Form submission
     const scriptURL = 'https://script.google.com/macros/s/AKfycbzCxL0lVCVXxePlOu9Cy1Uzpuyml9TipqAryNYSq8YJA01nZXX5rwxECdP2FX3bAdBa/exec';
     const form = document.forms['level2TestForm'];
     const popup = document.getElementById('popup');
