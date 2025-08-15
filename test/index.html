@@ -91,7 +91,7 @@
       color: #0d6efd;
       margin-bottom: 1rem;
     }
-    .hidden { display: none; }
+    .hidden { display: none !important; }
     .center-text { text-align: center; font-size: 1.2rem; }
     footer {
       background: #f8f9fa;
@@ -209,13 +209,13 @@
     }
 
     function showTest() {
-      document.getElementById('startButton').classList.add('hidden');
-      document.getElementById('testForm').classList.remove('hidden');
+        document.getElementById('startButton').style.display = 'none'; // hide start button
+        document.getElementById('testForm').classList.remove('hidden'); // show form
     }
 
     setInterval(checkStart, 1000);
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzCxL0lVCVXxePlOu9Cy1Uzpuyml9TipqAryNYSq8YJA01nZXX5rwxECdP2FX3bAdBa/exec'; // replace with your URL
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzGgH6_26zWQfMBPFlnsgReiJ0Gc8nin2mlsNxpvt2kMT6f9Ut5Z5t8NA8ZZBAz0ucI/exec'; // replace with your URL
     const form = document.forms['level2TestForm'];
     const popup = document.getElementById('popup');
     const popupMessage = document.getElementById('popupMessage');
