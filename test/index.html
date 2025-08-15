@@ -131,60 +131,56 @@
 
       <label>1. Which of the following is NOT an OOP concept?</label>
       <div class="mcq-options">
-        <label><input type="checkbox" name="q1" value="Inheritance"> Inheritance</label>
-        <label><input type="checkbox" name="q1" value="Encapsulation"> Encapsulation</label>
-        <label><input type="checkbox" name="q1" value="Compilation"> Compilation</label>
-        <label><input type="checkbox" name="q1" value="Polymorphism"> Polymorphism</label>
+        <label><input type="radio" name="q1" value="Inheritance" required> Inheritance</label>
+        <label><input type="radio" name="q1" value="Encapsulation"> Encapsulation</label>
+        <label><input type="radio" name="q1" value="Compilation"> Compilation</label>
+        <label><input type="radio" name="q1" value="Polymorphism"> Polymorphism</label>
       </div>
 
-      <label>2. Output of:
-        <pre>a = [1, 2, 3]
-b = a
-b.append(4)
-print(a)</pre>
-      </label>
+      <label>2. What will be the output of the following code?<br>
+      a = [1, 2, 3]<br>b = a<br>b.append(4)<br>print(a)</label>
       <div class="mcq-options">
-        <label><input type="checkbox" name="q2" value="[1, 2, 3]"> [1, 2, 3]</label>
-        <label><input type="checkbox" name="q2" value="[1, 2, 3, 4]"> [1, 2, 3, 4]</label>
-        <label><input type="checkbox" name="q2" value="Error"> Error</label>
-        <label><input type="checkbox" name="q2" value="[4, 1, 2, 3]"> [4, 1, 2, 3]</label>
+        <label><input type="radio" name="q2" value="[1, 2, 3]" required> [1, 2, 3]</label>
+        <label><input type="radio" name="q2" value="[1, 2, 3, 4]"> [1, 2, 3, 4]</label>
+        <label><input type="radio" name="q2" value="Error"> Error</label>
+        <label><input type="radio" name="q2" value="[4, 1, 2, 3]"> [4, 1, 2, 3]</label>
       </div>
 
-      <label>3. HTTP method used to update existing data?</label>
+      <label>3. In web development, which HTTP method is generally used to update existing data?</label>
       <div class="mcq-options">
-        <label><input type="checkbox" name="q3" value="GET"> GET</label>
-        <label><input type="checkbox" name="q3" value="POST"> POST</label>
-        <label><input type="checkbox" name="q3" value="PUT"> PUT</label>
-        <label><input type="checkbox" name="q3" value="DELETE"> DELETE</label>
+        <label><input type="radio" name="q3" value="GET" required> GET</label>
+        <label><input type="radio" name="q3" value="POST"> POST</label>
+        <label><input type="radio" name="q3" value="PUT"> PUT</label>
+        <label><input type="radio" name="q3" value="DELETE"> DELETE</label>
       </div>
 
-      <label>4. ACID in databases stands for?</label>
+      <label>4. In databases, what does ACID stand for?</label>
       <div class="mcq-options">
-        <label><input type="checkbox" name="q4" value="Atomicity, Consistency, Isolation, Durability"> Atomicity, Consistency, Isolation, Durability</label>
-        <label><input type="checkbox" name="q4" value="Accuracy, Consistency, Integrity, Durability"> Accuracy, Consistency, Integrity, Durability</label>
-        <label><input type="checkbox" name="q4" value="Atomicity, Connectivity, Integrity, Dataflow"> Atomicity, Connectivity, Integrity, Dataflow</label>
-        <label><input type="checkbox" name="q4" value="Accuracy, Clarity, Isolation, Durability"> Accuracy, Clarity, Isolation, Durability</label>
+        <label><input type="radio" name="q4" value="Atomicity, Consistency, Isolation, Durability" required> Atomicity, Consistency, Isolation, Durability</label>
+        <label><input type="radio" name="q4" value="Accuracy, Consistency, Integrity, Durability"> Accuracy, Consistency, Integrity, Durability</label>
+        <label><input type="radio" name="q4" value="Atomicity, Connectivity, Integrity, Dataflow"> Atomicity, Connectivity, Integrity, Dataflow</label>
+        <label><input type="radio" name="q4" value="Accuracy, Clarity, Isolation, Durability"> Accuracy, Clarity, Isolation, Durability</label>
       </div>
 
-      <h3>Section B – Coding</h3>
-      <label>5. Program: sum of all even numbers from 1 to 100.</label>
+      <h3>Section B – Coding (2 Questions)</h3>
+      <label>5. Easy: Write a program in any language that prints the sum of all even numbers from 1 to 100.</label>
       <textarea name="q5" rows="4" required></textarea>
 
-      <label>6. Second largest number without sort.</label>
+      <label>6. Medium: Given a list of integers, write a function to return the second largest number without using built-in sort functions. Example: [10, 20, 4, 45, 99] → 45</label>
       <textarea name="q6" rows="4" required></textarea>
 
-      <h3>Section C – Logical Reasoning & IQ</h3>
-      <label>7. Train speed question.</label>
+      <h3>Section C – Logical Reasoning & IQ (2 Questions)</h3>
+      <label>7. A train 150 meters long passes a man standing on a platform in 15 seconds. What is the speed of the train in km/hr?</label>
       <input type="text" name="q7" required>
 
-      <label>8. Typists question.</label>
+      <label>8. If 2 typists can type 2 pages in 2 minutes, how many typists are needed to type 18 pages in 6 minutes?</label>
       <input type="text" name="q8" required>
 
-      <h3>Section D – Real-World Thinking</h3>
-      <label>9. Ride-sharing app location challenges.</label>
+      <h3>Section D – Real-World Technical Thinking (2 Questions)</h3>
+      <label>9. Imagine Akrika Technologies is developing a ride-sharing app. Name two challenges you might face in real-time location tracking and suggest possible solutions.</label>
       <textarea name="q9" rows="4" required></textarea>
 
-      <label>10. Offline messaging approach.</label>
+      <label>10. You are tasked with building a mobile app for offline messaging without the internet. Briefly explain how you would approach the problem and which technology you might use.</label>
       <textarea name="q10" rows="4" required></textarea>
 
       <button type="submit">Submit Test</button>
@@ -202,7 +198,7 @@ print(a)</pre>
   </footer>
 
   <script>
-    const startDate = new Date("2025-08-15T11:00:00"); // test start time
+    const startDate = new Date("2025-08-15T11:00:00");
 
     function checkStart() {
       const now = new Date();
@@ -217,10 +213,9 @@ print(a)</pre>
       document.getElementById('testForm').classList.remove('hidden');
     }
 
-    setInterval(checkStart, 1000); // check every second
+    setInterval(checkStart, 1000);
 
-    // Form submission
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzCxL0lVCVXxePlOu9Cy1Uzpuyml9TipqAryNYSq8YJA01nZXX5rwxECdP2FX3bAdBa/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzCxL0lVCVXxePlOu9Cy1Uzpuyml9TipqAryNYSq8YJA01nZXX5rwxECdP2FX3bAdBa/exec'; // replace with your URL
     const form = document.forms['level2TestForm'];
     const popup = document.getElementById('popup');
     const popupMessage = document.getElementById('popupMessage');
