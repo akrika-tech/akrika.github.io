@@ -191,7 +191,7 @@
 
     <div id="successMessage">
       ✅ Your test has been submitted successfully.<br>
-      📢 Results will be out on <b>19 August 2025</b>.
+      📢 Results will be out on <b>20 August 2025</b>.
     </div>
   </div>
 
@@ -219,9 +219,19 @@
     function showTest() {
       document.getElementById('startButton').style.display = 'none';
       document.getElementById('testForm').classList.remove('hidden');
+      document.getElementById('instructions').style.display = 'none';
     }
 
-    setInterval(checkStart, 1000);
+    // If already submitted, hide test
+    if (localStorage.getItem("akrTestSubmitted") === "true") {
+      document.getElementById('beforeStart').style.display = 'none';
+      document.getElementById('startButton').style.display = 'none';
+      document.getElementById('testForm').style.display = 'none';
+      document.getElementById('instructions').style.display = 'none';
+      document.getElementById('successMessage').style.display = 'block';
+    } else {
+      setInterval(checkStart, 1000);
+    }
 
     const scriptURL = 'https://script.google.com/macros/s/AKfycbzGgH6_26zWQfMBPFlnsgReiJ0Gc8nin2mlsNxpvt2kMT6f9Ut5Z5t8NA8ZZBAz0ucI/exec';
     const form = document.forms['level2TestForm'];
@@ -236,9 +246,11 @@
       fetch(scriptURL, { method: 'POST', body: new FormData(form) })
         .then(response => {
           popup.style.display = 'none';
+          localStorage.setItem("akrTestSubmitted", "true");
           document.getElementById('testForm').style.display = 'none';
           document.getElementById('startButton').style.display = 'none';
           document.getElementById('instructions').style.display = 'none';
+          document.getElementById('beforeStart').style.display = 'none';
           document.getElementById('successMessage').style.display = 'block';
         })
         .catch(error => {
