@@ -1,1 +1,247 @@
-#hello
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Level 2 Test - Akrika Technologies</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      background: #ffffff;
+      color: #212529;
+    }
+    header {
+      background: #f8f9fa;
+      padding: 1rem;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    header h1 {
+      font-size: 1.8rem;
+      color: #0d6efd;
+      margin: 0;
+    }
+    nav.desktop-nav a {
+      margin: 0 0.6rem;
+      text-decoration: none;
+      color: #0d6efd;
+      font-weight: 500;
+    }
+    nav.desktop-nav a:hover {
+      text-decoration: underline;
+    }
+    .menu-icon {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 250px;
+      height: 100%;
+      background: #ffffff;
+      box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      transition: right 0.3s ease;
+      z-index: 1000;
+    }
+    .mobile-nav a {
+      margin: 1rem 0;
+      color: #0d6efd;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+    .mobile-nav a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+    h1 {
+      color: #0d6efd;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    input, textarea, select {
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      padding: 0.75rem;
+      font-size: 1rem;
+      background: #0d6efd;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #0056d2;
+    }
+    .popup {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      display: none;
+    }
+    .popup .box {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+    }
+    .popup .box h2 {
+      color: #0d6efd;
+      margin-bottom: 1rem;
+    }
+    footer {
+      background: #f8f9fa;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #6c757d;
+      margin-top: 3rem;
+    }
+    @media (max-width: 768px) {
+      nav.desktop-nav {
+        display: none;
+      }
+      .menu-icon {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Akrika Technologies</h1>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <nav class="desktop-nav">
+      <a href="/index.html">Home</a>
+      <a href="/about/index.html">About</a>
+      <a href="/internship/index.html">Internship</a>
+      <a href="/contact/index.html">Contact</a>
+    </nav>
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="/index.html" onclick="toggleMenu()">Home</a>
+      <a href="/about/index.html" onclick="toggleMenu()">About</a>
+      <a href="/internship/index.html" onclick="toggleMenu()">Internship</a>
+      <a href="/contact/index.html" onclick="toggleMenu()">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Level 2 Test</h1>
+    <form name="level2TestForm" method="POST">
+      <input type="email" name="email" placeholder="Registered Email Address" required>
+      <input type="tel" name="mobile" placeholder="Registered Mobile Number" required>
+
+      <label>1. What is the output of: print(2 ** 3 ** 2) in Python?</label>
+      <input type="text" name="q1" required>
+
+      <label>2. Which data structure works on FIFO principle?</label>
+      <input type="text" name="q2" required>
+
+      <label>3. If 3x = 18, what is the value of x?</label>
+      <input type="text" name="q3" required>
+
+      <label>4. Name one sorting algorithm with O(n log n) complexity.</label>
+      <input type="text" name="q4" required>
+
+      <label>5. Which protocol is used for sending emails?</label>
+      <input type="text" name="q5" required>
+
+      <label>6. What is the binary equivalent of 13?</label>
+      <input type="text" name="q6" required>
+
+      <label>7. If "APPLE" is coded as "EQQPI", what is "ORANGE" in the same code?</label>
+      <input type="text" name="q7" required>
+
+      <label>8. Write a single-line Java code to print "Hello World".</label>
+      <input type="text" name="q8" required>
+
+      <label>9. Which SQL command is used to remove all records from a table but keep the structure?</label>
+      <input type="text" name="q9" required>
+
+      <label>10. If today is Monday, what day will it be after 100 days?</label>
+      <input type="text" name="q10" required>
+
+      <button type="submit">Submit Test</button>
+    </form>
+  </div>
+
+  <div class="popup" id="popup">
+    <div class="box" id="popupBox">
+      <h2 id="popupMessage">Submitting your answers...</h2>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Akrika Technologies. All rights reserved.
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('mobileNav');
+      nav.style.right = nav.style.right === '0px' ? '-100%' : '0px';
+    }
+    window.addEventListener('click', function(e) {
+      const nav = document.getElementById('mobileNav');
+      if (!e.target.closest('.mobile-nav') && !e.target.closest('.menu-icon')) {
+        nav.style.right = '-100%';
+      }
+    });
+
+    const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_URL';
+    const form = document.forms['level2TestForm'];
+    const popup = document.getElementById('popup');
+    const popupMessage = document.getElementById('popupMessage');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      popup.style.display = 'flex';
+      popupMessage.textContent = 'Submitting your answers...';
+
+      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => {
+          popupMessage.textContent = '✅ Thank you! Your test has been submitted.';
+          form.reset();
+          setTimeout(() => { popup.style.display = 'none'; }, 4000);
+        })
+        .catch(error => {
+          popupMessage.textContent = '❌ Submission failed. Please try again.';
+          setTimeout(() => { popup.style.display = 'none'; }, 4000);
+        });
+    });
+  </script>
+</body>
+</html>
