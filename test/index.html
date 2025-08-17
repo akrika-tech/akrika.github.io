@@ -30,70 +30,21 @@
       max-width: 800px;
       margin: 3rem auto;
       padding: 0 1.5rem;
+      text-align: center;
     }
     h1 {
       color: #0d6efd;
       font-size: 2rem;
       margin-bottom: 1.5rem;
-      text-align: center;
     }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+    .message {
+      font-size: 1.2rem;
+      color: #212529;
     }
-    input, textarea {
-      padding: 0.75rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-    label {
+    .highlight {
+      color: green;
       font-weight: bold;
     }
-    .mcq-options label {
-      font-weight: normal;
-      display: block;
-    }
-    button {
-      padding: 0.75rem;
-      font-size: 1rem;
-      background: #0d6efd;
-      color: white;
-      font-weight: bold;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    button:hover {
-      background: #0056d2;
-    }
-    .popup {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 999;
-      display: none;
-    }
-    .popup .box {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 10px;
-      text-align: center;
-      width: 90%;
-      max-width: 400px;
-    }
-    .popup .box h2 {
-      color: #0d6efd;
-      margin-bottom: 1rem;
-    }
-    .hidden { display: none !important; }
-    .center-text { text-align: center; font-size: 1.2rem; }
-    #successMessage { display:none; color: green; font-size: 1.2rem; text-align:center; }
     footer {
       background: #f8f9fa;
       padding: 1rem;
@@ -111,153 +62,15 @@
 
   <div class="container">
     <h1>Level 2 Test</h1>
-    <div id="instructions" class="center-text">
-      <b>⏳ Time:</b> 45 minutes<br>
-      <b>📅 Date:</b> 17 August 2025<br>
-      <b>💯 Total Questions:</b> 10<br>
-      <i>Note: No negative marking.</i>
-    </div>
-
-    <div id="beforeStart" class="center-text">
-      ⏳ Test will begin on <b>17 August 2025</b> at <b>11:00 AM</b>.
-    </div>
-
-    <div id="startButton" class="hidden center-text">
-      <button onclick="showTest()">Start Test</button>
-    </div>
-
-    <form id="testForm" name="level2TestForm" method="POST" class="hidden">
-      <input type="email" name="email" placeholder="Registered Email Address" required>
-      <input type="tel" name="mobile" placeholder="Registered Mobile Number" required>
-
-      <h3>Section A – Programming & Technical Knowledge (4 MCQs)</h3>
-
-      <label>1. Which of the following is NOT an OOP concept?</label>
-      <div class="mcq-options">
-        <label><input type="radio" name="q1" value="Inheritance" required> Inheritance</label>
-        <label><input type="radio" name="q1" value="Encapsulation"> Encapsulation</label>
-        <label><input type="radio" name="q1" value="Compilation"> Compilation</label>
-        <label><input type="radio" name="q1" value="Polymorphism"> Polymorphism</label>
-      </div>
-
-      <label>2. What will be the output of the following code?<br>
-      a = [1, 2, 3]<br>b = a<br>b.append(4)<br>print(a)</label>
-      <div class="mcq-options">
-        <label><input type="radio" name="q2" value="[1, 2, 3]" required> [1, 2, 3]</label>
-        <label><input type="radio" name="q2" value="[1, 2, 3, 4]"> [1, 2, 3, 4]</label>
-        <label><input type="radio" name="q2" value="Error"> Error</label>
-        <label><input type="radio" name="q2" value="[4, 1, 2, 3]"> [4, 1, 2, 3]</label>
-      </div>
-
-      <label>3. In web development, which HTTP method is generally used to update existing data?</label>
-      <div class="mcq-options">
-        <label><input type="radio" name="q3" value="GET" required> GET</label>
-        <label><input type="radio" name="q3" value="POST"> POST</label>
-        <label><input type="radio" name="q3" value="PUT"> PUT</label>
-        <label><input type="radio" name="q3" value="DELETE"> DELETE</label>
-      </div>
-
-      <label>4. In databases, what does ACID stand for?</label>
-      <div class="mcq-options">
-        <label><input type="radio" name="q4" value="Atomicity, Consistency, Isolation, Durability" required> Atomicity, Consistency, Isolation, Durability</label>
-        <label><input type="radio" name="q4" value="Accuracy, Consistency, Integrity, Durability"> Accuracy, Consistency, Integrity, Durability</label>
-        <label><input type="radio" name="q4" value="Atomicity, Connectivity, Integrity, Dataflow"> Atomicity, Connectivity, Integrity, Dataflow</label>
-        <label><input type="radio" name="q4" value="Accuracy, Clarity, Isolation, Durability"> Accuracy, Clarity, Isolation, Durability</label>
-      </div>
-
-      <h3>Section B – Coding (2 Questions)</h3>
-      <label>5. Easy: Write a program in any language that prints the sum of all even numbers from 1 to 100.</label>
-      <textarea name="q5" rows="4" required></textarea>
-
-      <label>6. Medium: Given a list of integers, write a function to return the second largest number without using built-in sort functions. Example: [10, 20, 4, 45, 99] → 45</label>
-      <textarea name="q6" rows="4" required></textarea>
-
-      <h3>Section C – Logical Reasoning & IQ (2 Questions)</h3>
-      <label>7. A train 150 meters long passes a man standing on a platform in 15 seconds. What is the speed of the train in km/hr?</label>
-      <input type="text" name="q7" required>
-
-      <label>8. If 2 typists can type 2 pages in 2 minutes, how many typists are needed to type 18 pages in 6 minutes?</label>
-      <input type="text" name="q8" required>
-
-      <h3>Section D – Real-World Technical Thinking (2 Questions)</h3>
-      <label>9. Imagine Akrika Technologies is developing a ride-sharing app. Name two challenges you might face in real-time location tracking and suggest possible solutions.</label>
-      <textarea name="q9" rows="4" required></textarea>
-
-      <label>10. You are tasked with building a mobile app for offline messaging without the internet. Briefly explain how you would approach the problem and which technology you might use.</label>
-      <textarea name="q10" rows="4" required></textarea>
-
-      <button type="submit">Submit Test</button>
-    </form>
-
-    <div id="successMessage">
-      ✅ Your test has been submitted successfully.<br>
-      📢 Results will be out on <b>19 August 2025</b>.
-    </div>
-  </div>
-
-  <div class="popup" id="popup">
-    <div class="box" id="popupBox">
-      <h2 id="popupMessage">Submitting your answers...</h2>
-    </div>
+    <p class="message">
+      ⏳ The test window is now <span class="highlight">closed</span>.<br><br>
+      ✅ Thank you for your participation.<br>
+      📢 Results will be declared on <b>19 August 2025</b>.
+    </p>
   </div>
 
   <footer>
     &copy; 2025 Akrika Technologies. All rights reserved.
   </footer>
-
-  <script>
-    const startDate = new Date("2025-08-17T11:00:00");
-
-    function checkStart() {
-      const now = new Date();
-      if (now >= startDate) {
-        document.getElementById('beforeStart').classList.add('hidden');
-        document.getElementById('startButton').classList.remove('hidden');
-      }
-    }
-
-    function showTest() {
-      document.getElementById('startButton').style.display = 'none';
-      document.getElementById('testForm').classList.remove('hidden');
-      document.getElementById('instructions').style.display = 'none';
-    }
-
-    // If already submitted, hide test
-    if (localStorage.getItem("akrTestSubmitted") === "true") {
-      document.getElementById('beforeStart').style.display = 'none';
-      document.getElementById('startButton').style.display = 'none';
-      document.getElementById('testForm').style.display = 'none';
-      document.getElementById('instructions').style.display = 'none';
-      document.getElementById('successMessage').style.display = 'block';
-    } else {
-      setInterval(checkStart, 1000);
-    }
-
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzGgH6_26zWQfMBPFlnsgReiJ0Gc8nin2mlsNxpvt2kMT6f9Ut5Z5t8NA8ZZBAz0ucI/exec';
-    const form = document.forms['level2TestForm'];
-    const popup = document.getElementById('popup');
-    const popupMessage = document.getElementById('popupMessage');
-
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      popup.style.display = 'flex';
-      popupMessage.textContent = 'Submitting your answers...';
-
-      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-        .then(response => {
-          popup.style.display = 'none';
-          localStorage.setItem("akrTestSubmitted", "true");
-          document.getElementById('testForm').style.display = 'none';
-          document.getElementById('startButton').style.display = 'none';
-          document.getElementById('instructions').style.display = 'none';
-          document.getElementById('beforeStart').style.display = 'none';
-          document.getElementById('successMessage').style.display = 'block';
-        })
-        .catch(error => {
-          popupMessage.textContent = '❌ Submission failed. Please try again.';
-          setTimeout(() => { popup.style.display = 'none'; }, 4000);
-        });
-    });
-  </script>
 </body>
 </html>
