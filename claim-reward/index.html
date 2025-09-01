@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Claim Reward — Akrika Technologies</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { fontFamily:{outfit:['Outfit','sans-serif']}, colors:{brand:'#0d6efd',brandDark:'#0a58ca'}, boxShadow:{soft:'0 10px 30px rgba(13,110,253,0.12)'} } } }
+  </script>
+</head>
+<body class="font-outfit text-slate-800 bg-slate-50">
+
+  <header class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-brand/10 flex items-center justify-center"><img src="/logo.png" alt="logo" /></div>
+        <h1 class="text-xl font-semibold text-brand">Akrika Technologies</h1>
+      </div>
+    </div>
+  </header>
+
+  <main class="py-16">
+    <div class="max-w-2xl mx-auto px-4">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-semibold">Claim Your Goodies 🎁</h2>
+        <p id="subtext" class="mt-2 text-slate-600">Enter your promocode to check eligibility.</p>
+      </div>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-soft">
+        <!-- Step 1 -->
+        <div id="step1">
+          <input id="promocodeInput" placeholder="Enter Promocode"
+            class="w-full border border-slate-300 rounded-xl px-4 py-3 focus:outline-none focus:border-brand" />
+          <button id="checkCodeBtn" class="mt-4 w-full px-5 py-3 rounded-xl bg-brand text-white hover:bg-brandDark">Check Code</button>
+          <p id="promoMsg" class="mt-3 text-center text-sm"></p>
+        </div>
+
+        <!-- Step 2 -->
+        <form id="addressForm" class="hidden mt-6">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <input id="name" name="name" placeholder="Full Name" required class="w-full border rounded-xl px-4 py-3" />
+            <input id="mobile" name="mobile" placeholder="Mobile Number" required class="w-full border rounded-xl px-4 py-3" />
+          </div>
+
+          <input id="email" name="email" type="email" placeholder="Email" required class="mt-4 w-full border rounded-xl px-4 py-3" />
+          <input id="address" name="address" placeholder="Full Address" required class="mt-4 w-full border rounded-xl px-4 py-3" />
+
+          <div class="grid sm:grid-cols-3 gap-4 mt-4">
+            <input id="city" name="city" placeholder="City" required class="w-full border rounded-xl px-4 py-3" />
+            <input id="state" name="state" placeholder="State" required class="w-full border rounded-xl px-4 py-3" />
+            <input id="pincode" name="pincode" placeholder="Pincode" required class="w-full border rounded-xl px-4 py-3" />
+          </div>
+
+          <button type="submit" class="mt-6 w-full px-5 py-3 rounded-xl bg-brand text-white hover:bg-brandDark">Claim Now</button>
+          <p id="responseMsg" class="mt-4 text-center text-sm"></p>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="mt-12 text-center text-sm text-slate-600">
+    © <span id="year"></span> Akrika Technologies. All rights reserved.
+  </footer>
+
+<script>
+  // =========== CONFIG ===========
+  const API_URL = "https://script.google.com/macros/s/AKfycbxWsJtmTTyGE5_p5dLanU_wO9OWRxRCyyY3YvkIUJ0hVn98T0jDognNgoXMWfRTst4aYw/exec"; 
+  // ==============================
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const checkBtn = document.getElementById('checkCodeBtn');
+  const promoMsg = document.getElementById('promoMsg');
+  const step1 = document.getElementById('step1');
+  const addressForm = document.getElementById('addressForm');
+  const responseMsg = document.getElementById('responseMsg');
+  const subtext = document.getElementById('subtext');
+
+  // ---- Step 1: Check promocode ----
+  checkBtn.addEventListener('click', async () => {
+    const code = document.getElementById('promocodeInput').value.trim();
+    if (!code) { 
+      promoMsg.textContent = "Please enter a promocode."; 
+      promoMsg.className = "mt-3 text-sm text-red-600"; 
+      return; 
+    }
+    promoMsg.textContent = "Checking...";
+    promoMsg.className = "mt-3 text-sm text-slate-600";
+
+    try {
+      const res = await fetch(API_URL + "?action=check&code=" + encodeURIComponent(code));
+      const data = await res.json();
+      if (data.success) {
+        promoMsg.textContent = "Promocode valid — please fill your details.";
+        promoMsg.className = "mt-3 text-sm text-green-600";
+        step1.classList.add('hidden');
+        addressForm.classList.remove('hidden');
+        subtext.textContent = "Promocode applied — enter your full address.";
+        addressForm.dataset.promocode = code;
+      } else {
+        promoMsg.textContent = data.message || "Invalid code";
+        promoMsg.className = "mt-3 text-sm text-red-600";
+      }
+    } catch (err) {
+      promoMsg.textContent = "Connection error. Check your Apps Script deployment.";
+      promoMsg.className = "mt-3 text-sm text-red-600";
+      console.error(err);
+    }
+  });
+
+  // ---- Step 2: Submit Address ----
+  addressForm.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    responseMsg.textContent = "Submitting...";
+    responseMsg.className = "mt-4 text-sm text-slate-600";
+
+    const payload = {
+      promocode: addressForm.dataset.promocode,
+      name: document.getElementById('name').value.trim(),
+      mobile: document.getElementById('mobile').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      address: document.getElementById('address').value.trim(),
+      city: document.getElementById('city').value.trim(),
+      state: document.getElementById('state').value.trim(),
+      pincode: document.getElementById('pincode').value.trim()
+    };
+
+    const formBody = new URLSearchParams(payload).toString();
+
+    try {
+      const res = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formBody
+      });
+      const data = await res.json();
+      if (data.success) {
+        // disable form and show success
+        addressForm.innerHTML = `<p class="text-center text-green-600 font-medium text-lg">🎉 Claimed successfully. Dispatch soon...</p>`;
+      } else {
+        responseMsg.textContent = data.message || "Error: submission failed";
+        responseMsg.className = "mt-4 text-sm text-red-600";
+      }
+    } catch (err) {
+      responseMsg.textContent = "Error submitting. Check API_URL & Apps Script deployment.";
+      responseMsg.className = "mt-4 text-sm text-red-600";
+      console.error(err);
+    }
+  });
+</script>
+</body>
+</html>
