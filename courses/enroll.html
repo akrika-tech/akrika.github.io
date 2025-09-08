@@ -148,7 +148,7 @@
     </div>
   </footer>
 
-<script>
+<script type="module">
   // Icons
   window.addEventListener('DOMContentLoaded', () => {
     if (window.lucide) lucide.createIcons();
@@ -163,32 +163,64 @@
     });
   }
   document.getElementById("year").textContent = new Date().getFullYear();
+ // --------------- REPLACE THESE -----------------
+    const firebaseConfig = {
+      apiKey: "AIzaSyBaQUE3akTGGp_ZIZsWjcICImXdMPTj6M8",
+      authDomain: "akrika-dsa-enroll.firebaseapp.com",
+      projectId: "akrika-dsa-enroll",
+      storageBucket: "akrika-dsa-enroll.firebasestorage.app",
+      messagingSenderId: "580058435761",
+      appId: "1:580058435761:web:562b8499630d027faa5290",
+      measurementId: "G-R4T6GXXRSP"
+    };
+    const paymentURL = "https://rzp.io/rzp/z4xh2hk"; // your Razorpay payment link
+    // -----------------------------------------------
 
-  const scriptURL = "https://script.google.com/macros/s/AKfycbwuZpIg-u08uNjaVlZdwZxp_oE7dCmltMYJjk1Wp2vsJTsCxAR5wuOZFyX2vxP78Eu-/exec"; // Replace with your Apps Script web app URL
-  const paymentURL = "https://rzp.io/rzp/z4xh2hk"; // Replace with your Razorpay payment link
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 
-  const form = document.getElementById("enrollForm");
-  const submitBtn = form.querySelector("button[type='submit']");
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
 
-  form.addEventListener("submit", e => {
-    e.preventDefault();
+    const enrollForm = document.getElementById("enrollForm");
+    const submitBtn = document.getElementById("submitBtn");
+    const statusMsg = document.getElementById("statusMsg");
 
-    // Change button state
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Registering…";
+    enrollForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      statusMsg.classList.remove("hidden");
+      statusMsg.textContent = "Registering…";
 
-    const formData = new FormData(e.target);
-    fetch(scriptURL, { method: "POST", body: formData })
-      .then(() => {
-        window.location.href = paymentURL; // Redirect to payment after saving data
-      })
-      .catch(err => {
-        alert("Error! Please try again: " + err.message);
+      // gather form data
+      const data = {
+        name: enrollForm.name.value.trim(),
+        email: enrollForm.email.value.trim(),
+        contact: enrollForm.contact.value.trim(),
+        college: enrollForm.college.value.trim(),
+        semester: enrollForm.semester.value.trim(),
+        internship: enrollForm.internship.checked ? true : false,
+        status: "pending",          // pending before payment
+        createdAt: serverTimestamp()
+      };
+
+      try {
+        // Save to Firestore
+        const docRef = await addDoc(collection(db, "enrollments"), data);
+
+        // Optional: add doc id to localStorage for later reconciliation
+        localStorage.setItem("lastEnrollmentId", docRef.id);
+
+        // Redirect to Razorpay payment link
+        window.location.href = paymentURL;
+      } catch (err) {
+        console.error(err);
+        alert("Error saving data: " + (err.message || err));
         submitBtn.disabled = false;
-        submitBtn.textContent = "Proceed to Register"; // Reset button if error
-      });
-  });
-</script>
+        statusMsg.classList.add("hidden");
+      }
+    });
+  </script>
 
 </body>
 </html>
