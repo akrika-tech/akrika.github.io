@@ -150,14 +150,15 @@
   </footer>
 
 <script type="module">
-  import { saveEnrollment } from "./firebase.js";
+  import { saveEnrollment } from "/js/firebase.js";
 
   const enrollForm = document.getElementById("enrollForm");
   const submitBtn = document.getElementById("submitBtn");
   const statusMsg = document.getElementById("statusMsg");
   const paymentURL = "https://rzp.io/rzp/z4xh2hk"; // Razorpay DSA link
 
-  enrollForm.addEventListener("submitBtn", async (e) => {
+  // ✅ Corrected: use "submit" event instead of "submitBtn"
+  enrollForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     submitBtn.disabled = true;
     statusMsg.classList.remove("hidden");
@@ -185,7 +186,6 @@
     }
   });
 </script>
-
 
 </body>
 </html>
