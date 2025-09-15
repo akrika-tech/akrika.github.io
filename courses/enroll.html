@@ -157,7 +157,7 @@
   const statusMsg = document.getElementById("statusMsg");
   const paymentURL = "https://rzp.io/rzp/z4xh2hk"; // Razorpay DSA link
 
-  enrollForm.addEventListener("submit", async (e) => {
+  enrollForm.addEventListener("submitBtn", async (e) => {
     e.preventDefault();
     submitBtn.disabled = true;
     statusMsg.classList.remove("hidden");
