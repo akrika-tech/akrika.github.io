@@ -152,9 +152,16 @@
 <script type="module">
   import { saveEnrollment } from "/js/firebase.js";
 
+  window.addEventListener('DOMContentLoaded', () => {
+    if (window.lucide) lucide.createIcons();
+    document.getElementById('year').textContent = new Date().getFullYear();
+  });
+
+
   const enrollForm = document.getElementById("enrollForm");
   const submitBtn = document.getElementById("submitBtn");
   const statusMsg = document.getElementById("statusMsg");
+  
   const paymentURL = "https://rzp.io/rzp/z4xh2hk"; // Razorpay DSA link
 
   enrollForm.addEventListener("submit", async (e) => {
