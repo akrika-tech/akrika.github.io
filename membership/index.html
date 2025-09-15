@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Internship + Membership — Akrika Technologies</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { outfit: ['Outfit', 'sans-serif'] },
+          colors: { brand: '#0d6efd', brandDark: '#0a58ca' },
+          boxShadow: { soft: '0 10px 30px rgba(13,110,253,0.12)' }
+        }
+      }
+    }
+  </script>
+
+  <!-- Icons -->
+  <script defer src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="font-outfit text-slate-800 bg-slate-50">
+
+<!-- NAVBAR -->
+<header class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="h-16 flex items-center justify-between">
+      <a href="/index.html" class="flex items-center gap-2 group">
+        <div class="w-9 h-9 rounded-xl bg-brand/10 flex items-center justify-center">
+          <img src="/logo.png">
+        </div>
+        <span class="text-xl font-semibold text-brand group-hover:text-brandDark transition">Akrika Technologies</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="/services/index.html" class="hover:text-brand transition">Services</a>
+        <a href="/about/index.html" class="hover:text-brand transition">About</a>
+        <a href="/index.html#portfolio" class="hover:text-brand transition">Portfolio</a>
+        <a href="/courses/index.html" class="hover:text-brand transition">Courses</a>
+        <a href="/contact/index.html" class="hover:text-brand transition">Contact</a>
+        <a href="/blog/index.html" class="hover:text-brand transition">Blog</a>
+        <a href="/internship/index.html" class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-brand text-brand">
+          <i data-lucide="rocket" class="w-4 h-4"></i> Internship
+        </a>
+      </nav>
+      <button id="menuBtn" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-slate-300 text-slate-700">
+        <i data-lucide="menu" class="w-5 h-5"></i>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="md:hidden hidden border-t border-slate-200 bg-white">
+    <nav class="max-w-7xl mx-auto px-4 py-3 flex flex-col gap-3">
+      <a href="/services/index.html" class="py-2">Services</a>
+      <a href="/about/index.html" class="py-2">About</a>
+      <a href="/index.html#portfolio" class="py-2">Portfolio</a>
+      <a href="/courses/index.html" class="py-2">Courses</a>
+      <a href="/contact/index.html" class="py-2">Contact</a>
+      <a href="/blog/index.html" class="py-2">Blog</a>
+      <a href="/internship/index.html" class="py-2 inline-flex items-center gap-2 text-brand">
+        <i data-lucide="rocket" class="w-4 h-4"></i> Internship
+      </a>
+    </nav>
+  </div>
+</header>
+
+
+<!-- HERO -->
+<section class="py-12 text-center bg-slate-100">
+  <h1 class="text-4xl font-bold text-brand">🚀 Paid Internship + Membership</h1>
+  <p class="mt-3 text-slate-600 max-w-2xl mx-auto">
+    Become an official <b>Akrika Member</b> with <b>₹199 only</b>.  
+    Unlock internship opportunities + free access to our flagship DSA Masterclass (worth ₹4599).
+  </p>
+  <p class="mt-2 text-sm text-slate-500">Limited Seats • Evening Classes (7:00 – 8:30 PM)</p>
+</section>
+
+
+<!-- FORM -->
+<section class="py-16">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 bg-white shadow-soft rounded-2xl p-8">
+    <h2 class="text-2xl font-semibold text-center">Apply Now</h2>
+    <p class="text-center text-slate-600 mb-8">Fill your details and proceed to payment to confirm membership.</p>
+
+    <form id="applyForm" class="space-y-6">
+      <!-- Name -->
+      <div>
+        <label class="block text-sm font-semibold text-slate-700">Full Name</label>
+        <input name="name" type="text" required placeholder="Your Name" class="w-full mt-2 p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand focus:outline-none" />
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label class="block text-sm font-semibold text-slate-700">Email Address</label>
+        <input name="email" type="email" required placeholder="you@example.com" class="w-full mt-2 p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand focus:outline-none" />
+      </div>
+
+      <!-- Phone -->
+      <div>
+        <label class="block text-sm font-semibold text-slate-700">Mobile Number</label>
+        <input name="phone" type="tel" required placeholder="+91 98765 43210" class="w-full mt-2 p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand focus:outline-none" />
+      </div>
+
+      <!-- Why -->
+      <div>
+        <label class="block text-sm font-semibold text-slate-700">Why should we select you?</label>
+        <textarea name="message" rows="4" required placeholder="Tell us in few lines..." class="w-full mt-2 p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand focus:outline-none"></textarea>
+      </div>
+
+      <!-- Notes -->
+      <div class="text-sm text-slate-500">
+        ✅ Paid Internship Membership (₹199 only) <br>
+        ✅ Free DSA Masterclass (worth ₹4599) <br>
+        ✅ Internship Certificate from Akrika Technologies <br>
+        ✅ Priority selection for live projects & events
+      </div>
+
+      <!-- Submit -->
+      <button id="submitBtn" type="submit" class="w-full py-3 rounded-lg bg-brand text-white font-semibold hover:bg-brandDark transition">
+        Proceed & Pay ₹199
+      </button>
+    </form>
+
+    <div id="statusMsg" class="hidden mt-6 text-green-600 text-center font-semibold">Registering…</div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="border-t border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-slate-600">© <span id="year"></span> Akrika Technologies. All rights reserved.</p>
+      <div class="flex items-center gap-4 text-slate-500">
+        <a href="https://www.linkedin.com/company/akrika-technologies" class="hover:text-brand"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+        <a href="https://www.instagram.com" class="hover:text-brand"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Scripts -->
+<script type="module">
+  import { saveMembership } from "/js/firebase.js";
+
+  window.addEventListener('DOMContentLoaded', () => {
+    if (window.lucide) lucide.createIcons();
+    document.getElementById('year').textContent = new Date().getFullYear();
+  });
+
+  const form = document.getElementById("applyForm");
+  const submitBtn = document.getElementById("submitBtn");
+  const statusMsg = document.getElementById("statusMsg");
+
+  const paymentURL = "https://rzp.io/l/akrika199"; // Razorpay link
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    statusMsg.classList.remove("hidden");
+    statusMsg.textContent = "Registering…";
+
+    const data = {
+      name: form.name.value.trim(),
+      email: form.email.value.trim(),
+      phone: form.phone.value.trim(),
+      message: form.message.value.trim(),
+      status: "pending"
+    };
+
+    try {
+      await saveMembership(data);
+      statusMsg.textContent = "Redirecting to payment…";
+      window.location.href = paymentURL;
+    } catch (err) {
+      console.error(err);
+      alert("Error saving data: " + err.message);
+      submitBtn.disabled = false;
+      statusMsg.classList.add("hidden");
+    }
+  });
+</script>
+</body>
+</html>
